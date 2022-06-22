@@ -1,0 +1,27 @@
+#parent {
+    margin: auto;
+    width: auto;
+    text-align: center;
+}
+
+#inputFields {
+    margin: auto;
+    width: auto;
+    display: inline-block;
+}
+
+#inventoryIdField {
+    float: left;
+}
+
+#storeIdField {
+    float: left;
+}
+
+#filmIdField {
+    float: right;
+}
+
+#filmTitleField {
+    float: right;
+}

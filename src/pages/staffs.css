@@ -1,0 +1,46 @@
+#parent {
+    margin: auto;
+    width: auto;
+    text-align: center;
+}
+
+#inputFields {
+    margin: auto;
+    width: auto;
+    display: inline-block;
+}
+
+#bottomFields {
+    padding-left: 13%;
+    margin: auto;
+    width: auto;
+    text-align: center;
+}
+
+#staffIdField {
+    float: left;
+}
+
+#firstNameField {
+    float: left;
+}
+
+#lastNameField {
+    float: right;
+}
+
+#storeIdField {
+    float: right;
+}
+
+#addressIdField {
+    float: left;
+}
+
+#usernameField {
+    float: left;
+}
+
+#passwordField {
+    float: left;
+}

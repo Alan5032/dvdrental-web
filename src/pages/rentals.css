@@ -1,0 +1,35 @@
+#parent {
+    margin: auto;
+    width: auto;
+    text-align: center;
+}
+
+#inputFields {
+    margin: auto;
+    width: auto;
+    display: inline-block;
+}
+
+#rentalIdField {
+    float: left
+}
+
+#inventoryIdField {
+    float: left
+}
+
+#customerIdField {
+    float: right
+}
+
+#staffIdfield {
+    float: left
+}
+
+#rentalDateField {
+    float: left
+}
+
+#returnDateField {
+    float: right
+}

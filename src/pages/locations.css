@@ -1,0 +1,23 @@
+#parent {
+    margin: auto;
+    width: auto;
+    text-align: center;
+}
+
+#inputFields {
+    margin: auto;
+    width: auto;
+    display: inline-block;
+}
+
+#storeIdField {
+    float: left;
+}
+
+#managerIdField {
+    float: right;
+}
+
+#addressIdField {
+    float: right;
+}

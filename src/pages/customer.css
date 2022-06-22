@@ -1,0 +1,31 @@
+#parent {
+    margin: auto;
+    width: auto;
+    text-align: center;
+}
+
+#inputFields {
+    margin: auto;
+    width: auto;
+    display: inline-block;
+}
+
+#customerIdField {
+    float: left;
+}
+
+#storeIdField {
+    float: left;
+}
+
+#firstNameField {
+    float: left;
+}
+
+#lastNameField {
+    float: left;
+}
+
+#emailField {
+    float: right;
+}
