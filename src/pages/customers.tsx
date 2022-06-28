@@ -39,7 +39,11 @@ class Customers extends Component<CustomersProps, CustomersState> {
     getCustomers = async () => {
         let url = "http://localhost:8080/customers";
         try {
-            let responsePromise = fetch(url);
+            let responsePromise = fetch(url, {
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
+            });
             let response = await responsePromise;
             if (!response.ok) {
                 alert("The status is wrong. Expected: 200. Was: " + response.status);
@@ -63,7 +67,7 @@ class Customers extends Component<CustomersProps, CustomersState> {
             return;
         }
         for (let i = 0; i < this.state.customers.length; i++) {
-            let customerId = this.state.customers[i].id;
+            let customerId = this.state.customers[i].customerId;
             let storeId = this.state.customers[i].storeId;
             let firstName = this.state.customers[i].firstName;
             let lastName = this.state.customers[i].lastName;
@@ -131,7 +135,7 @@ class Customers extends Component<CustomersProps, CustomersState> {
         }
         let url = "http://localhost:8080/customers"
         let httpBody = {
-            id: this.state.customerId,
+            customerId: this.state.customerId,
             storeId: this.state.storeId,
             addressId: this.state.addressId,
             firstName: this.state.firstName,
@@ -142,7 +146,8 @@ class Customers extends Component<CustomersProps, CustomersState> {
             let responsePromise = fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Tenant-ID': "1"
                 },
                 body: JSON.stringify(httpBody)
             });
@@ -177,7 +182,10 @@ class Customers extends Component<CustomersProps, CustomersState> {
         }
         try {
             let responsePromise = fetch(url, {
-                method: 'PUT'
+                method: 'PUT',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
             });
             let response = await responsePromise;
             if (!response.ok) {
@@ -195,8 +203,11 @@ class Customers extends Component<CustomersProps, CustomersState> {
         let url = "http://localhost:8080/customers/" + this.state.customerId;
         try {
             let responsePromise = fetch(url, {
-                method: 'DELETE'
-            })
+                method: 'DELETE',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
+            });
             let response = await responsePromise;
             if (!response.ok) {
                 alert("The status is wrong. Expected: 200. Was: " + response.status);

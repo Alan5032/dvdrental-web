@@ -34,7 +34,11 @@ class Inventories extends Component<InventoriesProps, InventoriesState> {
     getInventories = async () => {
         let url = "http://localhost:8080/inventory";
         try {
-            let responsePromise = fetch(url);
+            let responsePromise = fetch(url, {
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
+            });
             let response = await responsePromise;
             if (!response.ok) {
                 alert("The status is wrong. Expected: 200. Was: " + response.status);
@@ -118,7 +122,8 @@ class Inventories extends Component<InventoriesProps, InventoriesState> {
             let responsePromise = fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Tenant-ID': "1"
                 },
                 body: JSON.stringify(httpBody)
             });
@@ -147,7 +152,10 @@ class Inventories extends Component<InventoriesProps, InventoriesState> {
         }
         try {
             let responsePromise = fetch(url, {
-                method: 'PUT'
+                method: 'PUT',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
             });
             let response = await responsePromise;
             if (!response.ok) {
@@ -165,8 +173,11 @@ class Inventories extends Component<InventoriesProps, InventoriesState> {
         let url = "http://localhost:8080/inventory/" + this.state.inventoryId;
         try {
             let responsePromise = fetch(url, {
-                method: 'DELETE'
-            })
+                method: 'DELETE',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
+            });
             let response = await responsePromise;
             if (!response.ok) {
                 alert("The status is wrong. Expected: 200. Was: " + response.status);

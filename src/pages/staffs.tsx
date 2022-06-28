@@ -41,7 +41,11 @@ class Staffs extends Component<StaffsProps, StaffsState> {
     getStaffs = async () => {
         let url = "http://localhost:8080/staffs";
         try {
-            let responsePromise = fetch(url);
+            let responsePromise = fetch(url, {
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
+            });
             let response = await responsePromise;
             if (!response.ok) {
                 alert("The status is wrong. Expected: 200. Was: " + response.status);
@@ -65,7 +69,7 @@ class Staffs extends Component<StaffsProps, StaffsState> {
             return;
         }
         for (let i = 0; i < this.state.staffs.length; i++) {
-            let staffId = this.state.staffs[i].id;
+            let staffId = this.state.staffs[i].staffId;
             let firstName = this.state.staffs[i].firstName;
             let lastName = this.state.staffs[i].lastName;
             let storeId = this.state.staffs[i].storeId;
@@ -144,7 +148,7 @@ class Staffs extends Component<StaffsProps, StaffsState> {
         }
         let url = "http://localhost:8080/staffs"
         let httpBody = {
-            id: this.state.staffId,
+            staffId: this.state.staffId,
             storeId: this.state.storeId,
             addressId: this.state.addressId,
             firstName: this.state.firstName,
@@ -156,7 +160,8 @@ class Staffs extends Component<StaffsProps, StaffsState> {
             let responsePromise = fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Tenant-ID': "1"
                 },
                 body: JSON.stringify(httpBody)
             });
@@ -194,7 +199,10 @@ class Staffs extends Component<StaffsProps, StaffsState> {
         }
         try {
             let responsePromise = fetch(url, {
-                method: 'PUT'
+                method: 'PUT',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
             });
             let response = await responsePromise;
             if (!response.ok) {
@@ -212,7 +220,10 @@ class Staffs extends Component<StaffsProps, StaffsState> {
         let url = "http://localhost:8080/staffs/" + this.state.staffId;
         try {
             let responsePromise = fetch(url, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
             })
             let response = await responsePromise;
             if (!response.ok) {

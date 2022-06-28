@@ -39,7 +39,11 @@ class Rentals extends Component<RentalsProps, RentalsState> {
     getRentals = async () => {
         let url = "http://localhost:8080/rentals";
         try {
-            let responsePromise = fetch(url);
+            let responsePromise = fetch(url, {
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
+            });
             let response = await responsePromise;
             if (!response.ok) {
                 alert("The status is wrong. Expected: 200. Was: " + response.status);
@@ -143,7 +147,8 @@ class Rentals extends Component<RentalsProps, RentalsState> {
             let responsePromise = fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Tenant-ID': "1"
                 },
                 body: JSON.stringify(httpBody)
             });
@@ -178,7 +183,10 @@ class Rentals extends Component<RentalsProps, RentalsState> {
         }
         try {
             let responsePromise = fetch(url, {
-                method: 'PUT'
+                method: 'PUT',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
             });
             let response = await responsePromise;
             if (!response.ok) {
@@ -196,8 +204,11 @@ class Rentals extends Component<RentalsProps, RentalsState> {
         let url = "http://localhost:8080/rentals/" + this.state.rentalId;
         try {
             let responsePromise = fetch(url, {
-                method: 'DELETE'
-            })
+                method: 'DELETE',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
+            });
             let response = await responsePromise;
             if (!response.ok) {
                 alert("The status is wrong. Expected: 200. Was: " + response.status);

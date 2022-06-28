@@ -33,7 +33,11 @@ class Locations extends Component<LocationsProps, LocationsState> {
     getLocations = async () => {
         let url = "http://localhost:8080/locations";
         try {
-            let responsePromise = fetch(url);
+            let responsePromise = fetch(url, {
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
+            });
             let response = await responsePromise;
             if (!response.ok) {
                 alert("The status is wrong. Expected: 200. Was: " + response.status);
@@ -105,7 +109,8 @@ class Locations extends Component<LocationsProps, LocationsState> {
             let responsePromise = fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Tenant-ID': "1"
                 },
                 body: JSON.stringify(httpBody)
             });
@@ -131,7 +136,10 @@ class Locations extends Component<LocationsProps, LocationsState> {
         }
         try {
             let responsePromise = fetch(url, {
-                method: 'PUT'
+                method: 'PUT',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
             });
             let response = await responsePromise;
             if (!response.ok) {
@@ -149,8 +157,11 @@ class Locations extends Component<LocationsProps, LocationsState> {
         let url = "http://localhost:8080/locations/" + this.state.storeId;
         try {
             let responsePromise = fetch(url, {
-                method: 'DELETE'
-            })
+                method: 'DELETE',
+                headers: {
+                    'X-Tenant-ID': "1"
+                }
+            });
             let response = await responsePromise;
             if (!response.ok) {
                 alert("The status is wrong. Expected: 200. Was: " + response.status);
